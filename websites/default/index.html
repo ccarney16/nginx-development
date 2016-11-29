@@ -1,0 +1,226 @@
+<!Doctype HTML>
+<html lang="en">
+	<head>
+		<title>Nginx Web Development</title>
+
+		 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+		<style>
+			* {
+				font-family: 'Roboto', sans-serif;
+			}
+
+			#page {
+				margin: 0 auto;
+				overflow: hidden;
+			
+				width: 95%;
+				max-width: 1280px;
+
+				border-top-left-radius: 8px;
+				border-top-right-radius: 8px;
+
+				box-shadow: 3px 1px 10px -4px #222222;	
+			}
+
+			.header {
+					background: #2e7e3e;
+					padding: 15px;
+					border-bottom: solid 1px #333;
+					color:white;
+					box-shadow: inset 0 4px 15px -9px #222222;
+			}
+			.content {
+				margin-top: 0;
+				padding: 10px;
+				border-left: solid thin #aaa;
+				border-right: solid thin #aaa;
+				height: 100%;
+			}
+			hr {
+				background: #bbb;
+				border: none;
+				height: 1px;
+			}
+
+			h4 {
+				text-decoration:none;
+			}
+
+			a {
+				text-decoration: none;
+				color: #5575ee;
+			}
+
+			footer {
+				height: 50px;
+				line-height: 50px;
+				
+				background: #222;
+				
+				text-align: center;
+				font-size: 18px;
+
+				margin: -1px;
+				color: white;
+
+			}
+
+			.structure > li  {
+				font-size: 16px;
+				padding: 2px;
+			}
+
+			.structure > li > strong  {
+				font-size: 16px;
+			}
+
+			.structure > li > small {
+				font-size: 14px;
+			}
+
+			table {
+				border: solid thin #ccc;
+			}
+			table tbody tr th, table tbody tr td {
+				border-bottom: solid thin #ccc;
+				margin: -5px;
+				padding: 10px;
+			}
+
+			.well {
+				border: solid thin #aaa;
+				border-radius: 4px;
+				background: #ddd;
+				box-shadow: inset 4px 4px 10px -5px #666;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="page">
+			<div class="header">
+				<h2 style="">Welcome to Nginx Web Development!</h2>
+			</div>
+			<div class="content">
+				<hr/>
+				<h2>Documentation</h2>
+				<hr/>
+				<h4 style="text-align:center">Thank you for downloading and using my script to develop nginx websites! In order to make full use of this script, please make sure that your PHP setup is able to properly access your files (ex. /home/youself/nginx-development/). Other than that, good luck and happy coding!</h4>
+				<br/>
+				<hr/>
+				<h2>Commands</h2>
+				<hr/>
+				<p>nginx-dev has a rich yet basic command line functionality, here is the output of --help:</p>
+				<div class="well">
+<p>Usage: ./nginx-dev.sh COMMAND [options]<br />
+<br />
+Main commands:<br />
+<br />
+&nbsp;start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; starts the nginx environment<br />
+&nbsp;stop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stops the nginx environment<br />
+&nbsp;sites&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; main site command<br />
+&nbsp;&nbsp;&nbsp; list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list all the sites under the environment<br />
+&nbsp;&nbsp;&nbsp; add [www.example.dev]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; adds a new site under the config<br />
+&nbsp;&nbsp;&nbsp; remove [www.example.dev]&nbsp; removes a website<br />
+&nbsp;&nbsp;&nbsp; clean [www.example.dev]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rebuilds a sites configuration to repo default<br />
+<br />
+&nbsp;config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; main global config command<br />
+&nbsp;&nbsp;&nbsp; list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lists all the global variables<br />
+&nbsp;&nbsp;&nbsp; set VAR=&quot;var&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sets a variable in the global config, leave &quot;&quot; for nothing<br />
+<br />
+&nbsp;rebuild-env&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rebuilds the development environment from the selected repo<br />
+&nbsp;test-nginx-config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tests the current root nginx config<br />
+<br />
+Options:<br />
+<br />
+&nbsp;--help - returns this screen<br />
+&nbsp;--repo=[git url] - overrides the global repo<br />
+&nbsp;--root=[location - overrides the global root location<br />
+&nbsp;--env=&quot;var:test, var2:test2&quot; - extra variables</p>
+
+				</div>
+				<div>
+					<br/>
+					<strong>Here is this repo's layout and functions:</strong>
+					<hr/>
+					<ul class="structure">
+						<li><strong>Root Directory:</strong>
+							<ul class="structure">
+								<li><strong>configs:</strong> <small>The main nginx configuration folder</small>
+									<ul class="structure">
+										<li>nginx.conf - <small>The main Nginx config file</small></li>
+										<li>default-website.conf - <small>A generic site config file</small></li>
+										<li><strong>per-site:</strong> - <small>per site config folder</small>
+											<ul class="structure">
+												<li>*.conf - <small>a per site config, typically formatted with siten name (ex. localhost.conf)</small></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<strong>websites:</strong> - <small>Our site data</small>
+								</li>
+								<li>main.conf - <small>Repo configuration file</small></li>
+								<li>startup.sh - <small>An optional configuration script</small></li>
+							</ul>
+						</li>
+					</ul>
+					<hr/>
+					<h3>Configuration Files</h3>
+					<hr/>
+					<div>There are a few things to settle before getting into the configuration files. 
+						 nginx-dev has a simple variable system that dictate how variables are passed for parsing.
+						 <br/>
+						 <br/>
+						 <table>
+							 <tr>
+								 <th>Variable Type</th>
+								 <th>Description</th>
+							 </tr>
+							 <tr>
+								 <td>Command Line</td>
+								 <td>Variables issued in the command line, these variables are looked at first</td>
+							 </tr>
+							 <tr>
+								 <td>Global</td>
+								 <td>These variables are loaded in ~/.nginx-dev.conf; These variables are looked at second and can be overridden by the Command Line</td>
+							 </tr>
+							 <tr>
+								 <td>Repo</td>
+								 <td>Loaded in the Root environment's main.conf file, These variables will be overridden by the Command Line and Global variables</td>
+							 </tr>
+						 </table>
+						 <br/>
+						 As a side note, all variables are unique within the script, starting with CLI_, GLOBAL_, and REPO_. But when templating nginx config files, these
+						 identifiers are ignored and comes as first come first serve basis.<br/>
+						 <hr>
+						 <h4>main.conf</h4>
+						 <hr/>
+						 <p>main.conf is the repo configuration file for all the variables, Here is this repo's config</p>
+						 <div class="well">
+							# Variables for the repo, can include anything, but these are the required variables <br/>
+							# Once Processed, these variables become REPO_<name><br/>
+							# Blank lines are not permitted, if you wish to make things neater, add # to a new lines<br/>
+							# Do NOT add # on the variable lines, you will screw the system up.<br/>
+							#<br/>
+							# Main Config for nginx<br/>
+							NGINXCONFIG=configs/nginx.conf<br/>
+							#<br/>
+							# Default Site Config<br/>
+							DEFAULTCONFIG=configs/default-website.conf<br/>
+							#<br/>
+							# Extra directories that need to be created (not copied by git)<br/>
+							MKDIR=run, tmp, tmp/client_body, tmp/fastcgi_temp, tmp/proxy_temp, tmp/scgi_temp, tmp/uwsgi_temp, logs<br/>
+							#<br/>
+							# Main script for primary setup<br/>
+							PRIMARYSCRIPT=setup.sh<br/>
+						 </div>
+					</div>
+				</div>
+			</div>
+			<footer>
+				See my other open source projects: <a href="https://github.com/ccarney16" target="_blank">Github</a>
+			</footer>
+		</div>
+	</body>
+</html>
