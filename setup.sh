@@ -4,7 +4,7 @@
 # Everything in this script must be functions, All functions are optional
 
 # This is first run when starting a fresh repo
-# EVENT: AFTER
+# EVENT: BEFORE
 function setup_initRepo {
     return
 }
@@ -12,12 +12,13 @@ function setup_initRepo {
 # Option parameters are added in help, Useful for any dynamic variable data
 # EVENT: AFTER
 function setup_onHelp {
-    return
+    echo " --port=num - port number for websites"
 }
 
 # On building a new site
 # EVENT: AFTER
 function setup_onAdd {
+    cp $GLOBAL_RootEnv/$ENV_DefaultWebContent/* $GLOBAL_RootEnv/$ENV_WebRoot/$ENV_ServerName/ -r
     return
 }
 
